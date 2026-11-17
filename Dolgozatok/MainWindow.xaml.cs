@@ -48,5 +48,22 @@ namespace Dolgozatok
 
             DataContext = this;
         }
+
+        private void Hozzaadas_Click(object sender, RoutedEventArgs e)
+        {
+            string nev = txtNev.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(nev))
+            {
+                MessageBox.Show("Add meg a tanuló nevét!", "Hiányzó adat", MessageBoxButton.OK);
+                return;
+            }
+
+            Dolgozatok.Add(new Dolgozat(nev, eletkor, pontszam));
+
+            Dtgrid.Items.Refresh();
+        }
+
+
     }
 }

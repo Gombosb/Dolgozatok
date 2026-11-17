@@ -51,53 +51,24 @@
                     <ColumnDefinition Width="0.8*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0"
-                   Content="Név:"
-                   VerticalAlignment="Center"
-                   Padding="5,0,8,0"/>
+                <Label Grid.Column="0" Content="Név:" VerticalAlignment="Center" Padding="5,0,8,0"/>
 
-                <TextBox x:Name="txtNev"
-                     Grid.Column="1"
-                     Height="32"
-                     VerticalContentAlignment="Center"
-                     Margin="0,0,14,0"/>
+                <TextBox x:Name="txtNev" Grid.Column="1" Height="32" VerticalContentAlignment="Center" Margin="0,0,14,0"/>
 
-                <Label Grid.Column="2"
-                   Content="Életkor:"
-                   VerticalAlignment="Center"
-                   Padding="5,0,8,0"/>
+                <Label Grid.Column="2" Content="Életkor:" VerticalAlignment="Center" Padding="5,0,8,0"/>
 
-                <TextBox x:Name="txtEletkor"
-                     Grid.Column="3"
-                     Height="32"
-                     VerticalContentAlignment="Center"
-                     Margin="0,0,14,0"/>
+                <TextBox x:Name="txtEletkor" Grid.Column="3" Height="32" VerticalContentAlignment="Center" Margin="0,0,14,0"/>
 
-                <Label Grid.Column="4"
-                   Content="Pontszám:"
-                   VerticalAlignment="Center"
-                   Padding="5,0,8,0"/>
+                <Label Grid.Column="4" Content="Pontszám:" VerticalAlignment="Center" Padding="5,0,8,0"/>
 
-                <TextBox x:Name="txtPontszam"
-                     Grid.Column="5"
-                     Height="32"
-                     VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtPontszam" Grid.Column="5" Height="32" VerticalContentAlignment="Center"/>
             </Grid>
 
-            <StackPanel Grid.Row="2"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
 
-                <Button Content="Hozzáadás"
-                    Width="125"
-                    Height="40"
-                    Margin="0,0,12,0"
-                    Click="Hozzaadas_Click"/>
+                <Button Content="Hozzáadás" Width="125" Height="40" Margin="0,0,12,0" Click="Hozzaadas_Click"/>
 
-                <Button Content="Mentés"
-                    Width="125"
-                    Height="40"
-                    Click="Mentes_Click"/>
+                <!--<Button Content="Mentés" Width="125" Height="40" Click="Mentes_Click"/>-->
 
             </StackPanel>
         </Grid>
