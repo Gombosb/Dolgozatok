@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.Win32;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,17 +55,55 @@ namespace Dolgozatok
         {
             string nev = txtNev.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(nev))
+            int eletkor;
+            int pontszam;
+
+            if (string.IsNullOrWhiteSpace(nev) || string.IsNullOrWhiteSpace(txtEletkor.Text) || string.IsNullOrWhiteSpace(txtPontszam.Text))
             {
-                MessageBox.Show("Add meg a tanuló nevét!", "Hiányzó adat", MessageBoxButton.OK);
+                MessageBox.Show("Minden mező kitöltése kötelező!", "Hiányzó adat", MessageBoxButton.OK);
                 return;
             }
+
+            eletkor = int.Parse(txtEletkor.Text);
+            pontszam = int.Parse(txtPontszam.Text);
 
             Dolgozatok.Add(new Dolgozat(nev, eletkor, pontszam));
 
             Dtgrid.Items.Refresh();
         }
 
+        private void Mentes_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog
+            {
+                Title = "Dolgozatok mentése",
+                Filter = "Szövegfájl (*.txt)|*.txt",
+                DefaultExt = ".txt",
+                AddExtension = true,
+                FileName = "Mentettdolgozatok.txt"
+            };
+
+            if (dialog.ShowDialog() != true)
+                return;
+
+            try
+            {
+                var sorok = new List<string>{"Név; Életkor; Pontszám"};
+
+                foreach (var d in Dolgozatok)
+                {
+                    sorok.Add($"{d.Nev};{d.Eletkor};{d.Pontszam}");
+                }
+
+                File.WriteAllLines(dialog.FileName, sorok, new UTF8Encoding(true));
+
+                MessageBox.Show("A dolgozatok mentése sikerült!", "Mentés", MessageBoxButton.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba történt a mentés során:\n{ex.Message}", "Mentési hiba", MessageBoxButton.OK);
+            }
+        }
 
     }
 }
