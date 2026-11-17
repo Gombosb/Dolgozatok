@@ -14,7 +14,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <DataGrid x:Name="dgDolgozatok"
+            <DataGrid x:Name="Dtgrid"
                   Grid.Row="0"
                   ItemsSource="{Binding Dolgozatok}"
                   AutoGenerateColumns="False"
